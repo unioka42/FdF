@@ -1,0 +1,4 @@
+*.o
+fdf
+libft.a
+libgnl.a
