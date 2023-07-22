@@ -32,7 +32,7 @@ static char	*copy_s(const char *s, size_t *start, size_t end, int *flag)
 	return (result);
 }
 
-static size_t	split_counter(const char *s, char c)
+size_t	split_counter(const char *s, char c)
 {
 	size_t	i;
 	int		flag;
