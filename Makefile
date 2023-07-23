@@ -9,15 +9,15 @@ MLX_A		=	./minilibx_macos/libmlx.a
 
 CC			=	gcc
 INCLUDE 	=	./includes
-CFLAGS		=	-Wall -Wextra -Werror -I$(INCLUDE)
-SRCS		=	fdf.c
+CFLAGS		=	-g -I$(INCLUDE)# -Wall -Wextra -Werror 
+SRCS		=	$(wildcard srcs/*.c)
 
 OBJS		=	$(SRCS:%.c=%.o)
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS) $(LIBFT_A) $(GNL_A) $(MLX_A)
-				$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -L$(GNL) -L$(MLX) -lmlx -o $(NAME) -framework OpenGL -framework AppKit
+				$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -lft -L$(GNL) -lgnl -L$(MLX) -lmlx -o $(NAME) -framework OpenGL -framework AppKit
 
 $(LIBFT_A):
 				$(MAKE) -C $(LIBFT)
