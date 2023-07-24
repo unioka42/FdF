@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 00:20:14 by kokada            #+#    #+#             */
-/*   Updated: 2023/07/23 02:45:18 by kokada           ###   ########.fr       */
+/*   Updated: 2023/07/23 16:08:47 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	count_row(char *file_path)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
+		{
+			close(fd);
 			return (count);
+		}
 		count++;
 		free(line);
 	}
