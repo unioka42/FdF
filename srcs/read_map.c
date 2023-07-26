@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:28:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/07/23 21:09:32 by kokada           ###   ########.fr       */
+/*   Updated: 2023/07/26 22:36:49 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ t_map	*read_map(char *file_path)
 	int		i;
 
 	tmp = (t_map *)malloc(sizeof(t_map));
-	tmp->height = count_row(file_path);
 	fd = open(file_path, O_RDONLY);
+	tmp->height = count_row(file_path);
 	line = get_next_line(fd);
 	tmp->width = split_counter(line, ' ');
 	tmp->map_list = (int **)malloc(sizeof(int *) * (tmp->height + 1));
