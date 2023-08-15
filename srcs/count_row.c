@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 00:20:14 by kokada            #+#    #+#             */
-/*   Updated: 2023/07/23 16:08:47 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/15 15:07:00 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	count_row(char *file_path)
 	char	*line;
 
 	fd = open(file_path, O_RDONLY);
+	if (fd < 0)
+		return (-1);
 	count = 0;
 	while (1)
 	{
