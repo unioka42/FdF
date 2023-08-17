@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:39:30 by kokada            #+#    #+#             */
-/*   Updated: 2023/07/23 17:16:32 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/17 23:25:06 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*get_line_and_tmp(char **tmp, int newline)
 	char	*new_tmp;
 	int		rest_len;
 
-	line = ft_substr(*tmp, 0, newline + 1);
+	line = ft_substr(*tmp, 0, newline);
 	if (line == NULL)
 		return (NULL);
 	rest_len = ft_strlen(*tmp + newline);
