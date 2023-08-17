@@ -6,50 +6,79 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:28:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/07/26 22:36:49 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/18 00:39:06 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-static void	fill(int *z_line, char *line, int width)
+static int	fill(int *z_line, int *color, char *line, int width)
 {
-	char	**nums;
+	char	**points;
+	char	**point;
 	int		i;
 
-	nums = ft_split(line, ' ');
+	points = ft_split(line, ' ');
 	i = 0;
 	while (i < width)
 	{
-		z_line[i] = ft_atoi(nums[i]);
-		free(nums[i]);
+		if (points[i] == NULL)
+			return (-1);
+		point = ft_split(points[i], ',');
+		if (ko_strisdigit(point[0]) == -1)
+			return (-1);
+		z_line[i] = ft_atoi(point[0]);
+		if (point[1] != NULL)
+		{
+			if (point[1][0] == '0' && point[1][1] == 'x' && point[2] == NULL)
+				color[i] = ft_atoi_base(point[1] + 2, "0123456789ABCDEF");
+			else
+				return (-1);
+		}
+		else
+			color[i] = 10100586;
+		free(points[i]);
 		i++;
 	}
-	free(nums);
+	if (points[i] != NULL)
+		return (-1);
+	free(points);
+	return (0);
 }
 
-t_map	*read_map(char *file_path)
+int	read_map(char *file_path, t_map *map)
 {
 	int		fd;
 	char	*line;
-	t_map	*tmp;
 	int		i;
+	char	a;
 
-	tmp = (t_map *)malloc(sizeof(t_map));
 	fd = open(file_path, O_RDONLY);
-	tmp->height = count_row(file_path);
+	if (fd < 0)
+		return (-1);
+	map->height = count_row(file_path);
 	line = get_next_line(fd);
-	tmp->width = split_counter(line, ' ');
-	tmp->map_list = (int **)malloc(sizeof(int *) * (tmp->height + 1));
+	map->width = split_counter(line, ' ');
+	if (map->height < 0 || map->width < 0)
+		return (-2);
+	map->map_list = (int **)malloc(sizeof(int *) * (map->height + 1));
+	map->map_list_color = (int **)malloc(sizeof(int *) * (map->height + 1));
+	if (map->map_list == NULL)
+		return (-3);
 	i = 0;
-	while (i < tmp->height)
+	while (i < map->height)
 	{
-		tmp->map_list[i] = (int *)malloc(sizeof(int) * (tmp->width + 1));
-		fill(tmp->map_list[i], line, tmp->width);
+		map->map_list[i] = (int *)malloc(sizeof(int) * (map->width + 1));
+		map->map_list_color[i] = (int *)malloc(sizeof(int) * (map->width + 1));
+		if (fill(map->map_list[i], map->map_list_color[i], line,
+				map->width) < 0)
+		{
+			return (-4);
+		}
 		line = get_next_line(fd);
 		i++;
 	}
-	tmp->map_list[i] = NULL;
-	return (tmp);
+	map->map_list[i] = NULL;
+	return (1);
 }
