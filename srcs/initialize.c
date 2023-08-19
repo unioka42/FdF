@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:44:32 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/19 22:32:20 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 00:46:08 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	mlx_display_init(t_display *display)
 
 int	pose_init(t_fdf *fdf)
 {
+	fdf->pose->is_iso = 1;
 	fdf->pose->positon_x = 0;
 	fdf->pose->positon_y = 0;
 	fdf->pose->positon_z = ko_min(WIDTH / fdf->map->width / 2.5, HEIGHT
