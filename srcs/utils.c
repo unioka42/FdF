@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:11:47 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/17 23:51:54 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/18 21:15:13 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ko_strisdigit(char *s)
 	int	i;
 
 	i = 0;
+	if (s[i] == '-')
+		i++;
 	while (s[i] != '\0')
 	{
 		if (!ft_isdigit(s[i++]))

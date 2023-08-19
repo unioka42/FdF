@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 21:35:36 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/18 23:46:46 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/19 12:53:33 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_putnbr(char *str, char *base, int adic, int negative_count)
 
 	i = 0;
 	n = 0;
-	while (str[i] != '\0' && char_base_checker(str[i], base))
+	while (str[i] != '\0' && char_base_checker(ft_tolower(str[i]), base))
 	{
 		n = n * adic + char_to_num(ft_tolower(str[i]), base);
 		i++;

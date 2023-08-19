@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:28:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/18 00:39:06 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/19 12:56:39 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ static int	fill(int *z_line, int *color, char *line, int width)
 		if (point[1] != NULL)
 		{
 			if (point[1][0] == '0' && point[1][1] == 'x' && point[2] == NULL)
-				color[i] = ft_atoi_base(point[1] + 2, "0123456789ABCDEF");
+				color[i] = ft_atoi_base(point[1] + 2, "0123456789abcdef");
 			else
 				return (-1);
 		}
 		else
-			color[i] = 10100586;
+			color[i] = 0xffffff;
 		free(points[i]);
 		i++;
 	}
@@ -60,6 +60,8 @@ int	read_map(char *file_path, t_map *map)
 	map->height = count_row(file_path);
 	line = get_next_line(fd);
 	map->width = split_counter(line, ' ');
+	if (line[0] == ' ')
+		map->width--;
 	if (map->height < 0 || map->width < 0)
 		return (-2);
 	map->map_list = (int **)malloc(sizeof(int *) * (map->height + 1));
