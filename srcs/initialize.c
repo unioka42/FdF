@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:44:32 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/18 19:32:14 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/19 22:32:20 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int	pose_init(t_fdf *fdf)
 	fdf->pose->rotate_x = 0;
 	fdf->pose->rotate_y = 0;
 	fdf->pose->rotate_z = 0;
-	fdf->pose->height = 0.1;
+	fdf->pose->height = 1;
 	return (1);
+}
+
+void	mlx_hook_init(t_fdf *fdf)
+{
+	mlx_key_hook(fdf->display->win, key_hook, fdf);
 }
