@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:34:15 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 16:31:21 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 16:52:51 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	key_hook(int key, void *param)
 	fdf = (t_fdf *)param;
 	if (key == ESC)
 	{
+		free_fdf(fdf);
+		system("leaks -q fdf");
 		exit(0);
 	}
 	if (key == MAIN_PAD_I)
@@ -62,5 +64,5 @@ int	key_hook(int key, void *param)
 	rotate(fdf, key);
 	move(fdf, key);
 	draws(param);
-	return (0);
+	return(0);
 }

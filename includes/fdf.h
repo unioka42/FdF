@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:24:16 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 16:31:40 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 17:32:46 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ void			create_3d_plot(t_point *p, t_pose *pose);
 void			put_pixel(t_fdf *fdf, int x, int y, int color);
 int				ft_atoi_base(char *str, char *base);
 int				key_hook(int key, void *param);
+void			free_fdf(t_fdf *fdf);
+int				free_char_list(char **list, int status);
+int				free_int_list(int **list, int status);
 // initialize.c
 int				allocate_memory(t_fdf **fdf_ptr);
 void			mlx_hook_init(t_fdf *fdf);

@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:28:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 16:33:49 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 17:30:05 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,26 @@ static int	fill(int *z_line, int *color, char *line, int width)
 	int		i;
 
 	points = ft_split(line, ' ');
+	free(line);
 	i = 0;
 	while (i < width)
 	{
 		if (points[i] == NULL)
-			return (-1);
+			return (free_char_list(point, -1));
 		point = ft_split(points[i], ',');
 		if (ko_strisdigit(point[0]) == -1)
-			return (-1);
+			return (free_char_list(point, -1));
 		z_line[i] = ft_atoi(point[0]);
 		if (point[1] != NULL)
 		{
 			if (point[1][0] == '0' && point[1][1] == 'x' && point[2] == NULL)
 				color[i] = ft_atoi_base(point[1] + 2, "0123456789abcdef");
 			else
-				return (-1);
+				return (free_char_list(point, -1));
 		}
 		else
 			color[i] = 0xffffff;
+		free_char_list(point, 1);
 		free(points[i]);
 		i++;
 	}
