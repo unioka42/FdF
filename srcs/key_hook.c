@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:34:15 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 00:49:24 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 14:03:41 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	rotate(t_fdf *fdf, int key)
 {
 	if (key == MAIN_PAD_1)
-		fdf->pose->rotate_x += 0.05;
+		fdf->pose->rotate_x += 0.1;
 	else if (key == MAIN_PAD_2)
-		fdf->pose->rotate_x -= 0.05;
+		fdf->pose->rotate_x -= 0.1;
 	else if (key == MAIN_PAD_3)
-		fdf->pose->rotate_y += 0.05;
+		fdf->pose->rotate_y += 0.1;
 	else if (key == MAIN_PAD_4)
-		fdf->pose->rotate_y -= 0.05;
+		fdf->pose->rotate_y -= 0.1;
 	else if (key == MAIN_PAD_5)
-		fdf->pose->rotate_z += 0.05;
+		fdf->pose->rotate_z += 0.1;
 	else if (key == MAIN_PAD_6)
-		fdf->pose->rotate_z -= 0.05;
+		fdf->pose->rotate_z -= 0.1;
 }
 
 void	move(t_fdf *fdf, int key)
