@@ -6,13 +6,13 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 15:41:33 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 15:42:11 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 15:43:30 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	put_pixel(t_fdf *fdf, int x, int y, int color)
+void	put_pixel(t_fdf *fdf, int x, int y, int color)
 {
 	int	pixel;
 
