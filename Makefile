@@ -47,4 +47,14 @@ fclean:			localclean
 
 re:				fclean all
 
-.PHONY:			all clean fclean re localclean
+test: $(NAME)
+	@echo "Running tests on .fdf files..."
+	@for f in test_maps/*.fdf; do \
+		echo "run: $$f"; \
+		./$(NAME) $$f; \
+	done
+	@echo "All tests completed."
+
+.PHONY: all clean fclean re localclean test
+
+.PHONY:			all clean fclean re localclean test
