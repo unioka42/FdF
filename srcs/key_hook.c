@@ -6,13 +6,13 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:34:15 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 14:03:41 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 14:22:57 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	rotate(t_fdf *fdf, int key)
+static void	rotate(t_fdf *fdf, int key)
 {
 	if (key == MAIN_PAD_1)
 		fdf->pose->rotate_x += 0.1;
@@ -28,7 +28,7 @@ void	rotate(t_fdf *fdf, int key)
 		fdf->pose->rotate_z -= 0.1;
 }
 
-void	move(t_fdf *fdf, int key)
+static void	move(t_fdf *fdf, int key)
 {
 	if (key == LEFT_ARROW)
 		fdf->pose->positon_x -= 10;

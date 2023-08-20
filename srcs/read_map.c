@@ -6,12 +6,11 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:28:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/19 12:56:39 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 14:15:45 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 static int	fill(int *z_line, int *color, char *line, int width)
 {
