@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:24:16 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 14:24:30 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 15:08:21 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ typedef struct s_pose
 	int			positon_x;
 	int			positon_y;
 	int			positon_z;
-	double		rotate_x;
-	double		rotate_y;
-	double		rotate_z;
+	float		rotate_x;
+	float		rotate_y;
+	float		rotate_z;
 	float		height;
 }				t_pose;
 
