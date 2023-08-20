@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:34:15 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 14:22:57 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 15:25:48 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	move(t_fdf *fdf, int key)
 		fdf->pose->positon_z += 1;
 	else if (key == MAIN_PAD_Z)
 		fdf->pose->positon_z -= 1;
+	if (fdf->pose->positon_z < 1)
+		fdf->pose->positon_z = 1;
 }
 
 void	key_hook(int key, void *param)
