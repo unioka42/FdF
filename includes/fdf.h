@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:24:16 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 15:08:21 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 15:42:49 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int				read_map(char *file_path, t_map *map);
 int				count_row(char *file_path);
 void			draws(t_fdf *fdf);
 void			create_3d_plot(t_point *p, t_pose *pose, t_map *map);
+void			put_pixel(t_fdf *fdf, int x, int y, int color);
 int				ft_atoi_base(char *str, char *base);
 void			key_hook(int key, void *param);
 // initialize.c

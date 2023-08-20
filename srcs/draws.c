@@ -6,35 +6,11 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:08:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/19 15:05:33 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 15:42:19 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static void	put_pixel(t_fdf *fdf, int x, int y, int color)
-{
-	int	pixel;
-
-	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-	{
-		pixel = (y * fdf->display->size_line) + (x * sizeof(int));
-		if (fdf->display->endian == 0)
-		{
-			fdf->display->data_addr[pixel + 0] = (color)&0xFF;
-			fdf->display->data_addr[pixel + 1] = (color >> 8) & 0xFF;
-			fdf->display->data_addr[pixel + 2] = (color >> 16) & 0xFF;
-			fdf->display->data_addr[pixel + 3] = (color >> 24);
-		}
-		else if (fdf->display->endian == 1)
-		{
-			fdf->display->data_addr[pixel + 0] = (color >> 24);
-			fdf->display->data_addr[pixel + 1] = (color >> 16) & 0xFF;
-			fdf->display->data_addr[pixel + 2] = (color >> 8) & 0xFF;
-			fdf->display->data_addr[pixel + 3] = (color)&0xFF;
-		}
-	}
-}
 
 static int	set_precent(int start, int end, float persent)
 {
@@ -55,9 +31,9 @@ static int	set_color(t_point start, t_point end, t_point put)
 	else
 		percent = (float)(put.y - start.y) / (end.y - start.y);
 	r = set_precent((start.color >> 16) & 0xFF, (end.color >> 16) & 0xFF,
-		percent);
+			percent);
 	g = set_precent((start.color >> 8) & 0xFF, (end.color >> 8) & 0xFF,
-		percent);
+			percent);
 	b = set_precent(start.color & 0xFF, end.color & 0xFF, percent);
 	return ((r << 16) | (g << 8) | b);
 }
