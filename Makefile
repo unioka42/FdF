@@ -9,7 +9,7 @@ MLX_A		=	./minilibx_macos/libmlx.a
 
 CC			=	gcc
 INCLUDE 	=	./includes
-CFLAGS		=	-g -I$(INCLUDE)# -Wall -Wextra -Werror 
+CFLAGS		=	-g -I$(INCLUDE) -Wall -Wextra -Werror 
 SRCS		=	$(wildcard srcs/*.c)
 
 OBJS		=	$(SRCS:%.c=%.o)

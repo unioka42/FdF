@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:44:32 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 15:15:25 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 16:33:20 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ int	pose_init(t_fdf *fdf)
 
 void	mlx_hook_init(t_fdf *fdf)
 {
-	mlx_key_hook(fdf->display->win, key_hook, fdf);
+	mlx_key_hook(fdf->display->win, &key_hook, fdf);
 }

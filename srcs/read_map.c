@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:28:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 14:15:45 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 16:33:49 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	read_map(char *file_path, t_map *map)
 	int		fd;
 	char	*line;
 	int		i;
-	char	a;
 
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)

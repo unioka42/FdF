@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:11:47 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/18 21:15:13 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 16:00:19 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ int	ko_min(int a, int b)
 	if (a < b)
 		return (a);
 	return (b);
+}
+
+int	ko_istrue(int bool, int true_return, int false_return)
+{
+	if (bool)
+		return (true_return);
+	return (false_return);
 }
 
 size_t	ko_strlen(const char *s)

@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 10:29:02 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 14:13:06 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 16:29:19 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	isometric(int *x, int *y, int z)
 	*y = -z + (tmp_x + tmp_y) * sin(0.523599);
 }
 
-void	create_3d_plot(t_point *p, t_pose *pose, t_map *map)
+void	create_3d_plot(t_point *p, t_pose *pose)
 {
 	p->x *= pose->positon_z;
 	p->y *= pose->positon_z;

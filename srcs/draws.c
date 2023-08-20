@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:08:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 15:42:19 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 16:30:02 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,17 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 	int		err;
 	int		e2;
 
-	create_3d_plot(&f, fdf->pose, fdf->map);
-	create_3d_plot(&s, fdf->pose, fdf->map);
+	create_3d_plot(&f, fdf->pose);
+	create_3d_plot(&s, fdf->pose);
 	delta[0] = abs(s.x - f.x);
 	delta[1] = abs(s.y - f.y);
-	step[0] = (f.x < s.x) ? 1 : -1;
-	step[1] = (f.y < s.y) ? 1 : -1;
+	step[0] = ko_istrue(f.x < s.x, 1, -1);
+	step[1] = ko_istrue(f.y < s.y, 1, -1);
 	err = delta[0] - delta[1];
 	put_point = f;
-	while (1)
+	while (!(put_point.x == s.x && put_point.y == s.y))
 	{
 		put_pixel(fdf, put_point.x, put_point.y, set_color(f, s, put_point));
-		if (put_point.x == s.x && put_point.y == s.y)
-			break ;
 		e2 = 2 * err;
 		if (e2 > -delta[1])
 		{
@@ -107,5 +105,5 @@ void	draws(t_fdf *fdf)
 		y++;
 	}
 	mlx_put_image_to_window(fdf->display->mlx, fdf->display->win,
-		fdf->display->img, 0, 0);
+			fdf->display->img, 0, 0);
 }

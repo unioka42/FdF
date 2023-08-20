@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:24:16 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 15:42:49 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/20 16:31:40 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ typedef struct s_fdf
 int				read_map(char *file_path, t_map *map);
 int				count_row(char *file_path);
 void			draws(t_fdf *fdf);
-void			create_3d_plot(t_point *p, t_pose *pose, t_map *map);
+void			create_3d_plot(t_point *p, t_pose *pose);
 void			put_pixel(t_fdf *fdf, int x, int y, int color);
 int				ft_atoi_base(char *str, char *base);
-void			key_hook(int key, void *param);
+int				key_hook(int key, void *param);
 // initialize.c
 int				allocate_memory(t_fdf **fdf_ptr);
 void			mlx_hook_init(t_fdf *fdf);
@@ -99,6 +99,7 @@ int				pose_init(t_fdf *fdf);
 // utils.c
 void			ko_error(char *error_msg);
 int				ko_min(int a, int b);
+int				ko_istrue(int bool, int true_return, int false_return);
 size_t			ko_strlen(const char *s);
 int				ko_strisdigit(char *s);
 
