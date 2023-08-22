@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:28:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/22 16:44:52 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/22 17:08:12 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	fill_result(char **point, char **points, char *err_msg, t_fdf *fdf)
 		ko_error(err_msg, fdf);
 }
 
-static int	fill(int *z_line, int *color, char *line, t_fdf *fdf)
+static void	fill(int *z_line, int *color, char *line, t_fdf *fdf)
 {
 	char	**points;
 	char	**point;
@@ -53,10 +53,9 @@ static int	fill(int *z_line, int *color, char *line, t_fdf *fdf)
 	if (points[i] != NULL)
 		fill_result(NULL, points, WIDTH_ERR, fdf);
 	fill_result(NULL, points, NULL, fdf);
-	return (0);
 }
 
-int	read_map(char *file_path, t_map *map, t_fdf *fdf)
+void	read_map(char *file_path, t_map *map, t_fdf *fdf)
 {
 	int		fd;
 	char	*line;
@@ -64,18 +63,20 @@ int	read_map(char *file_path, t_map *map, t_fdf *fdf)
 
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
-		return (-1);
+		ko_error(FD_ERR, fdf);
 	map->height = count_row(file_path);
 	line = get_next_line(fd);
+	if (line == NULL)
+		ko_error(MAP_EMPTY, fdf);
 	map->width = split_counter(line, ' ');
 	if (line[0] == ' ')
 		map->width--;
-	if (map->height < 0 || map->width < 0)
-		return (-2);
+	if (map->height < 2 && map->width < 2)
+		ko_error(LOW_DATA, fdf);
 	map->map_list = (int **)malloc(sizeof(int *) * (map->height + 1));
 	map->map_list_color = (int **)malloc(sizeof(int *) * (map->height + 1));
 	if (map->map_list == NULL)
-		return (-3);
+		ko_error(MALLOC_ERR, fdf);
 	i = 0;
 	while (i < map->height)
 	{
@@ -83,12 +84,8 @@ int	read_map(char *file_path, t_map *map, t_fdf *fdf)
 		map->map_list[i + 1] = NULL;
 		map->map_list_color[i] = (int *)malloc(sizeof(int) * (map->width + 1));
 		map->map_list_color[i + 1] = NULL;
-		if (fill(map->map_list[i], map->map_list_color[i], line, fdf) < 0)
-		{
-			return (-4);
-		}
+		fill(map->map_list[i], map->map_list_color[i], line, fdf);
 		line = get_next_line(fd);
 		i++;
 	}
-	return (1);
 }

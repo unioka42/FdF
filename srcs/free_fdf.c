@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 16:43:39 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/22 15:06:32 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:59:29 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	free_int_list(int **list, int status)
 
 void	free_fdf(t_fdf *fdf)
 {
-	mlx_destroy_window(fdf->display->mlx, fdf->display->win);
-	mlx_destroy_image(fdf->display->mlx, fdf->display->img);
-	free(fdf->display->mlx);
+	// mlx_destroy_window(fdf->display->mlx, fdf->display->win);
+	// mlx_destroy_image(fdf->display->mlx, fdf->display->img);
+	//free(fdf->display->mlx);
 	free(fdf->pose);
 	free(fdf->display);
 	if (fdf->map->map_list != NULL)

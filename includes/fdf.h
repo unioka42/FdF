@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:24:16 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/22 16:42:54 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/22 17:07:16 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@
 # define COLOR_ERR "color error"
 # define NOT_DIGIT "not digit"
 # define WIDTH_ERR "width error"
+# define FD_ERR "file read error"
+# define MAP_ERR "map error"
+# define MALLOC_ERR "malloc error"
+# define MAP_EMPTY "file is empty"
+# define LOW_DATA "At least two points are needed"
 
 typedef struct s_point
 {
@@ -87,7 +92,7 @@ typedef struct s_fdf
 	t_pose		*pose;
 }				t_fdf;
 
-int				read_map(char *file_path, t_map *map, t_fdf *fdf);
+void			read_map(char *file_path, t_map *map, t_fdf *fdf);
 int				count_row(char *file_path);
 void			draws(t_fdf *fdf);
 void			create_3d_plot(t_point *p, t_pose *pose);
