@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:28:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/22 12:53:45 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:36:51 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int	read_map(char *file_path, t_map *map)
 	while (i < map->height)
 	{
 		map->map_list[i] = (int *)malloc(sizeof(int) * (map->width + 1));
-		map->map_list[i + 1] = NULL;
+		map->map_list[i + 1] = NULL;//後で消す
 		map->map_list_color[i] = (int *)malloc(sizeof(int) * (map->width + 1));
-		map->map_list_color[i + 1] = NULL;
+		map->map_list_color[i + 1] = NULL;//後で消す
 		if (fill(map->map_list[i], map->map_list_color[i], line,
 				map->width) < 0)
 		{
@@ -84,5 +84,6 @@ int	read_map(char *file_path, t_map *map)
 		i++;
 	}
 	map->map_list[i] = NULL;
+	map->map_list_color[i + 1] = NULL;
 	return (1);
 }

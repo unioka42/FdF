@@ -1,0 +1,12 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/kokada/dev/FdF",
+            "binaryPath": "/Users/kokada/dev/FdF/fdf",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "mlx.h": "c"
+    }
+}

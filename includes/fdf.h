@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:24:16 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 17:32:46 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:52:29 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 # define FDF_H
 # include "../Get_Next_Line/get_next_line.h"
 # include "../Libft/libft.h"
-# include "../minilibx_macos/mlx.h"
+# include "../minilibx_linux/mlx.h"
 # include "math.h"
 
 // window_size
 # define WIDTH 1280
 # define HEIGHT 720
 // key_map
-# define ESC 53
+# define ESC 65307
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
 # define DOWN_ARROW 125

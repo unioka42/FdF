@@ -2,10 +2,10 @@ NAME		=	fdf
 
 LIBFT		=	./libft/
 GNL			=	./Get_Next_Line/
-MLX			=	./minilibx_macos/
+MLX			=	./minilibx_linux/
 LIBFT_A		=	./libft/libft.a
 GNL_A		=	./Get_Next_Line/libgnl.a
-MLX_A		=	./minilibx_macos/libmlx.a
+MLX_A		=	./minilibx_linux/libmlx.a
 
 CC			=	gcc
 INCLUDE 	=	./includes
@@ -17,7 +17,7 @@ OBJS		=	$(SRCS:%.c=%.o)
 all:			$(NAME)
 
 $(NAME):		$(OBJS) $(LIBFT_A) $(GNL_A) $(MLX_A)
-				$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -lft -L$(GNL) -lgnl -L$(MLX) -lmlx -o $(NAME) -framework OpenGL -framework AppKit
+				$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -lft -L$(GNL) -lgnl -L$(MLX) -lmlx -o $(NAME) -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit
 
 $(LIBFT_A):
 				$(MAKE) -C $(LIBFT)
