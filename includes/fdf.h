@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:24:16 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/22 14:52:29 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/22 15:15:15 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,22 @@
 // window_size
 # define WIDTH 1280
 # define HEIGHT 720
-// key_map
+// key_map-minilibx_linux
 # define ESC 65307
-# define LEFT_ARROW 123
-# define RIGHT_ARROW 124
-# define DOWN_ARROW 125
-# define UP_ARROW 126
-# define MAIN_PAD_0 29
-# define MAIN_PAD_1 18
-# define MAIN_PAD_2 19
-# define MAIN_PAD_3 20
-# define MAIN_PAD_4 21
-# define MAIN_PAD_5 23
-# define MAIN_PAD_6 22
-# define MAIN_PAD_Z 6
-# define MAIN_PAD_X 7
-# define MAIN_PAD_I 34
-# define MAIN_PAD_P 35
+# define LEFT_ARROW 65361
+# define RIGHT_ARROW 65363
+# define DOWN_ARROW 65364
+# define UP_ARROW 65362
+# define MAIN_PAD_1 49
+# define MAIN_PAD_2 50
+# define MAIN_PAD_3 51
+# define MAIN_PAD_4 52
+# define MAIN_PAD_5 53
+# define MAIN_PAD_6 54
+# define MAIN_PAD_Z 122
+# define MAIN_PAD_X 120
+# define MAIN_PAD_I 105
+# define MAIN_PAD_P 112
 
 typedef struct s_point
 {
