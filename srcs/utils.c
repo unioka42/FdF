@@ -6,16 +6,17 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:11:47 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 16:00:19 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:07:32 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ko_error(char *error_msg)
+void	ko_error(char *error_msg, t_fdf *fdf)
 {
 	ft_putstr_fd(error_msg, 1);
 	ft_putchar_fd('\n', 1);
+	free_fdf(fdf);
 	exit(1);
 }
 

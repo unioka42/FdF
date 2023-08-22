@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:24:16 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/22 15:15:15 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:42:54 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@
 # define MAIN_PAD_X 120
 # define MAIN_PAD_I 105
 # define MAIN_PAD_P 112
+// err_msg
+# define COLOR_ERR "color error"
+# define NOT_DIGIT "not digit"
+# define WIDTH_ERR "width error"
 
 typedef struct s_point
 {
@@ -83,7 +87,7 @@ typedef struct s_fdf
 	t_pose		*pose;
 }				t_fdf;
 
-int				read_map(char *file_path, t_map *map);
+int				read_map(char *file_path, t_map *map, t_fdf *fdf);
 int				count_row(char *file_path);
 void			draws(t_fdf *fdf);
 void			create_3d_plot(t_point *p, t_pose *pose);
@@ -99,7 +103,7 @@ void			mlx_hook_init(t_fdf *fdf);
 int				mlx_display_init(t_display *display);
 int				pose_init(t_fdf *fdf);
 // utils.c
-void			ko_error(char *error_msg);
+void			ko_error(char *error_msg, t_fdf *fdf);
 int				ko_min(int a, int b);
 int				ko_istrue(int bool, int true_return, int false_return);
 size_t			ko_strlen(const char *s);
