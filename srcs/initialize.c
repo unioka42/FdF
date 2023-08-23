@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:44:32 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 16:33:20 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/23 10:10:24 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ int	mlx_display_init(t_display *display)
 	display->win = mlx_new_window(display->mlx, WIDTH, HEIGHT, "FdF");
 	display->img = mlx_new_image(display->mlx, WIDTH, HEIGHT);
 	display->data_addr = mlx_get_data_addr(display->img,
-											&(display->bits_per_pixel),
-											&(display->size_line),
-											&(display->endian));
+			&(display->bits_per_pixel), &(display->size_line), 
+			&(display->endian));
 	return (0);
 }
 
