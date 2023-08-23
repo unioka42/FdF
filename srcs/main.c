@@ -6,29 +6,22 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:46:07 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/22 16:59:36 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/23 12:36:03 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <libc.h>
 
-__attribute__((destructor)) static void destructor()
-{
-	system("leaks -q fdf");
-}
-
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_fdf	*fdf;
 
-	// if (argc != 2)
-	// 	ko_error("usege: ./fdf map_file.fdf");
+	fdf = NULL;
+	if (argc != 2)
+		ko_error("usege: ./fdf map_file.fdf", fdf);
 	if (allocate_memory(&fdf) < 0)
 		ko_error("malloc err", fdf);
-	read_map("test_maps/42.fdf", fdf->map, fdf);
-	free_fdf(fdf);
-	return (0);
+	read_map(argv[1], fdf->map, fdf);
 	mlx_display_init(fdf->display);
 	pose_init(fdf);
 	draws(fdf);
