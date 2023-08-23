@@ -6,36 +6,20 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:08:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/20 16:30:02 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/23 10:42:12 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	set_precent(int start, int end, float persent)
+static void	update_coordinates(int *err, int *put_point_coord, int step,
+		int delta)
 {
-	return (start + ((end - start) * persent));
-}
-
-static int	set_color(t_point start, t_point end, t_point put)
-{
-	float	percent;
-	int		r;
-	int		g;
-	int		b;
-
-	if (start.color == end.color)
-		return (start.color);
-	if (end.x - start.x > end.y - start.y)
-		percent = (float)(put.x - start.x) / (end.x - start.x);
-	else
-		percent = (float)(put.y - start.y) / (end.y - start.y);
-	r = set_precent((start.color >> 16) & 0xFF, (end.color >> 16) & 0xFF,
-			percent);
-	g = set_precent((start.color >> 8) & 0xFF, (end.color >> 8) & 0xFF,
-			percent);
-	b = set_precent(start.color & 0xFF, end.color & 0xFF, percent);
-	return ((r << 16) | (g << 8) | b);
+	if (*err > -delta)
+	{
+		*err -= delta;
+		(*put_point_coord) += step;
+	}
 }
 
 static void	draw_line(t_point f, t_point s, t_fdf *fdf)
@@ -56,18 +40,13 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 	put_point = f;
 	while (!(put_point.x == s.x && put_point.y == s.y))
 	{
-		put_pixel(fdf, put_point.x, put_point.y, set_color(f, s, put_point));
+		put_pixel(fdf, put_point.x, put_point.y, set_draw_color(f, s,
+				put_point));
 		e2 = 2 * err;
 		if (e2 > -delta[1])
-		{
-			err -= delta[1];
-			put_point.x += step[0];
-		}
+			update_coordinates(&err, &put_point.x, step[0], delta[1]);
 		if (e2 < delta[0])
-		{
-			err += delta[0];
-			put_point.y += step[1];
-		}
+			update_coordinates(&err, &put_point.y, step[1], delta[0]);
 	}
 }
 
@@ -105,5 +84,5 @@ void	draws(t_fdf *fdf)
 		y++;
 	}
 	mlx_put_image_to_window(fdf->display->mlx, fdf->display->win,
-			fdf->display->img, 0, 0);
+		fdf->display->img, 0, 0);
 }
