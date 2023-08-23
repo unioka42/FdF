@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:08:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/23 10:42:12 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:57:36 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 static void	update_coordinates(int *err, int *put_point_coord, int step,
 		int delta)
 {
-	if (*err > -delta)
-	{
-		*err -= delta;
-		(*put_point_coord) += step;
-	}
+	*err += delta;
+	*put_point_coord += step;
 }
 
 static void	draw_line(t_point f, t_point s, t_fdf *fdf)
@@ -44,7 +41,7 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 				put_point));
 		e2 = 2 * err;
 		if (e2 > -delta[1])
-			update_coordinates(&err, &put_point.x, step[0], delta[1]);
+			update_coordinates(&err, &put_point.x, step[0], -delta[1]);
 		if (e2 < delta[0])
 			update_coordinates(&err, &put_point.y, step[1], delta[0]);
 	}
