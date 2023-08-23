@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 21:35:36 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/19 12:53:33 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/22 23:40:44 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,12 @@ int	ft_atoi_base(char *str, char *base)
 	int	adic;
 	int	i;
 	int	negative_count;
-	int	n;
 
 	adic = ft_atoi_strlen(base);
 	if (adic < 2)
 		return (0);
 	i = 0;
 	negative_count = 0;
-	n = 0;
 	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\f' || str[i] == '\r'
 		|| str[i] == '\t' || str[i] == '\v')
 		i++;
