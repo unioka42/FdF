@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:24:16 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/23 10:42:55 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:08:09 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,7 @@ void			put_pixel(t_fdf *fdf, int x, int y, int color);
 int				ft_atoi_base(char *str, char *base);
 int				key_hook(int key, void *param);
 void			free_fdf(t_fdf *fdf);
-int				free_char_list(char **list, int status);
-int				free_int_list(int **list, int status);
+void			free_array(void **list);
 int				set_draw_color(t_point start, t_point end, t_point put);
 // initialize.c
 int				allocate_memory(t_fdf **fdf_ptr);

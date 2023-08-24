@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 11:28:35 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/23 10:02:53 by kokada           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:13:07 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	fill_result(char **point, char **points, char *err_msg, t_fdf *fdf)
 {
 	if (point != NULL)
-		free_char_list(point, 1);
-	free_char_list(points, 1);
+		free_array((void **)point);
+	free_array((void **)points);
 	if (err_msg != NULL)
 		ko_error(err_msg, fdf);
 }
@@ -54,7 +54,7 @@ static void	fill(int *z_line, int *color, char *line, t_fdf *fdf)
 		z_line[i] = ft_atoi(point[0]);
 		if (set_color(i, point, color) < 0)
 			fill_result(point, points, COLOR_ERR, fdf);
-		free_char_list(point, 1);
+		free_array((void **)point);
 		i++;
 	}
 	if (points[i] != NULL)
