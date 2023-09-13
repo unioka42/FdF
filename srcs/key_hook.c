@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:34:15 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/23 00:06:27 by kokada           ###   ########.fr       */
+/*   Updated: 2023/09/13 15:46:26 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ int	key_hook(int key, void *param)
 		fdf->pose->is_iso = 1;
 	else if (key == MAIN_PAD_P)
 		fdf->pose->is_iso = 0;
+	else if (key == 48)
+		fdf->pose->height += 0.05;
+	else if (key == 57)
+		fdf->pose->height -= 0.05;
 	rotate(fdf, key);
 	move(fdf, key);
 	draws(param);
