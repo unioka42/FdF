@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:44:32 by kokada            #+#    #+#             */
-/*   Updated: 2023/08/23 10:10:24 by kokada           ###   ########.fr       */
+/*   Updated: 2023/09/13 15:04:12 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ int	allocate_memory(t_fdf **fdf_ptr)
 	if (*fdf_ptr != NULL)
 	{
 		(*fdf_ptr)->map = (t_map *)malloc(sizeof(t_map));
+		(*fdf_ptr)->map->map_list = NULL;
+		(*fdf_ptr)->map->map_list_color = NULL;
 		if ((*fdf_ptr)->map != NULL)
 		{
 			(*fdf_ptr)->display = (t_display *)malloc(sizeof(t_display));
+			(*fdf_ptr)->display->mlx = NULL;
 			if ((*fdf_ptr)->display != NULL)
 			{
 				(*fdf_ptr)->pose = (t_pose *)malloc(sizeof(t_pose));
