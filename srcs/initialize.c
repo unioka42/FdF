@@ -6,7 +6,7 @@
 /*   By: kokada <kokada@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:44:32 by kokada            #+#    #+#             */
-/*   Updated: 2023/09/13 15:04:12 by kokada           ###   ########.fr       */
+/*   Updated: 2023/09/13 17:46:55 by kokada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	mlx_display_init(t_display *display)
 	display->win = mlx_new_window(display->mlx, WIDTH, HEIGHT, "FdF");
 	display->img = mlx_new_image(display->mlx, WIDTH, HEIGHT);
 	display->data_addr = mlx_get_data_addr(display->img,
-			&(display->bits_per_pixel), &(display->size_line), 
+			&(display->bits_per_pixel),
+			&(display->size_line),
 			&(display->endian));
 	return (0);
 }
@@ -54,14 +55,14 @@ int	pose_init(t_fdf *fdf)
 	fdf->pose->is_iso = 1;
 	fdf->pose->positon_x = WIDTH / 2;
 	fdf->pose->positon_y = HEIGHT / 3;
-	fdf->pose->positon_z = ko_min(WIDTH / fdf->map->width / 2, HEIGHT
-			/ fdf->map->height / 2);
+	fdf->pose->positon_z = ko_min(WIDTH / fdf->map->width, HEIGHT
+			/ fdf->map->height) / 2;
 	if (fdf->pose->positon_z < 1)
 		fdf->pose->positon_z = 1;
 	fdf->pose->rotate_x = 0;
 	fdf->pose->rotate_y = 0;
 	fdf->pose->rotate_z = 0;
-	fdf->pose->height = 1;
+	fdf->pose->height = 0.42;
 	return (1);
 }
 
